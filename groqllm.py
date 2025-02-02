@@ -12,15 +12,17 @@ api_key = os.getenv("GROQ_API_KEY")
 # Set the API key here
 client = Groq(api_key=api_key)
 
+corrected_text="hi helo whatsapp"
+
 chat_completion = client.chat.completions.create(
     messages=[
         {
             "role": "system",
-            "content": "you are a helpful assistant."
+            "content": "you are a helpful assistant. Text will be provided to you, you need to remove the unnecessary content out of it which doesnt make sense and keep the actual text out of it. Just give the formatted text with perfect format. Nothing else"
         },
         {
             "role": "user",
-            "content": "Explain the importance of fast language models",
+            "content": corrected_text,
         }
     ],
     model="llama-3.3-70b-versatile",
