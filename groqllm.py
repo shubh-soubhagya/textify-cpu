@@ -12,7 +12,7 @@ api_key = os.getenv("GROQ_API_KEY")
 # Set the API key here
 client = Groq(api_key=api_key)
 
-corrected_text="hi helo whatsapp"
+# corrected_text="hi helo whatsapp"
 
 chat_completion = client.chat.completions.create(
     messages=[
