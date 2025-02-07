@@ -1,20 +1,18 @@
-# from spellchecker import SpellChecker
-from transformers import AutoModel, AutoTokenizer
-# import re
+from paddleocr import PaddleOCR
+import cv2
 
-tokenizer = AutoTokenizer.from_pretrained(
-    'ucaslcl/GOT-OCR2_0', 
-    trust_remote_code=True
-)
+# Initialize PaddleOCR
+ocr = PaddleOCR(use_angle_cls=True, lang="en")  # Change "en" to "ch", "hi", etc., for different languages
 
-model = AutoModel.from_pretrained(
-    'ucaslcl/GOT-OCR2_0',
-    trust_remote_code=True, 
-    low_cpu_mem_usage=True, 
-    device_map='cpu', 
-    use_safetensors=True, 
-    pad_token_id=tokenizer.eos_token_id
-)
+def extract_text(image_path):
+    """Extracts text from an image using PaddleOCR"""
+    results = ocr.ocr(image_path, cls=True)
+    
+    extracted_text = []
+    for result in results:
+        for line in result:
+            extracted_text.append(line[1][0])  # Extracting detected text
+    
+    return "\n".join(extracted_text)
 
-# Ensure model is on CPU
-model = model.eval()
+
