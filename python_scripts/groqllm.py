@@ -30,6 +30,7 @@ def clean_text(corrected_text):
                         "you need to remove the unnecessary content out of it which "
                         "doesn't make sense and keep the actual text out of it. "
                         "Just give the formatted text with perfect format. Nothing else."
+                        "Add punctuations wherever necessary"
                     ),
                 },
                 {
