@@ -1,0 +1,73 @@
+<!-- templates/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OCR Assistant</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-brand">
+            <i class="fas fa-file-alt"></i>
+            OCR Assistant
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="main-content">
+            <!-- Left Panel - Image Upload -->
+            <div class="panel">
+                <div class="panel-header">
+                    <h2 class="panel-title">Upload Image</h2>
+                </div>
+                <div class="upload-area" id="uploadArea">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <p>Click or drag image here</p>
+                    <input type="file" id="fileInput" accept="image/*" style="display: none;">
+                </div>
+                <img id="imagePreview" class="image-preview">
+                <div class="loading">
+                    <i class="fas fa-spinner"></i>
+                </div>
+            </div>
+
+            <!-- Right Panel - Text Output -->
+            <div class="panel">
+                <div class="panel-header">
+                    <h2 class="panel-title">Extracted Text</h2>
+                    <button class="btn btn-secondary" onclick="copyText()">
+                        <i class="fas fa-copy"></i>
+                        Copy
+                    </button>
+                </div>
+                <div class="text-output" id="textOutput"></div>
+            </div>
+        </div>
+
+        <!-- Controls -->
+        <div class="controls">
+            <select id="formatSelect">
+                <option value="txt">Text File (.txt)</option>
+                <option value="pdf">PDF File (.pdf)</option>
+                <option value="docx">Word Document (.docx)</option>
+            </select>
+            <button class="btn btn-primary" onclick="downloadText()">
+                <i class="fas fa-download"></i>
+                Download
+            </button>
+        </div>
+    </div>
+
+    <div class="copy-notification" id="copyNotification">
+        Text copied to clipboard!
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+        
+    
+</body>
+
+</html>
