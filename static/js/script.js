@@ -19,6 +19,8 @@ uploadArea.addEventListener('dragleave', (e) => {
 
 uploadArea.addEventListener('drop', (e) => {
     e.preventDefault();
+    loading.style.display = 'block';
+
     const file = e.dataTransfer.files[0];
     handleFile(file);
 });
@@ -42,7 +44,7 @@ function handleFile(file) {
 }
 
 async function processImage(file) {
-    loading.style.display = 'block';
+    // loading.style.display = 'block';
     const formData = new FormData();
     formData.append('image', file);
 
