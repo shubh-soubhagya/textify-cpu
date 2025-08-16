@@ -1,0 +1,10 @@
+Flask
+gunicorn
+werkzeug
+fpdf
+python-dotenv
+groq
+paddleocr
+opencv-python
+pyspellchecker
+python-docx
